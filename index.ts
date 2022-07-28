@@ -1,5 +1,14 @@
-import { Request, Response } from "express";
+import express from 'express';
 
-export default async (req: Request, res: Response) => {
-  res.json({ message: "hello world! from Vercel power by Typescript" })
-}
+const app = express();
+const port = 3000;
+app.get('/', (req, res) => {
+  res.send('The sedulous hyena ate the antelope!');
+});
+// @ts-ignore
+app.listen(port, (err: any) => {
+  if (err) {
+    return console.error(err);
+  }
+  return console.log(`server is listening on ${port}`);
+});
