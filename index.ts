@@ -1,14 +1,8 @@
-import express from 'express';
+import Logger from './src/utils/logger'
+import App from "./src/app";
 
-const app = express();
-const port = 3000;
-app.get('/', (req, res) => {
-  res.send('The sedulous hyena ate the antelope!');
-});
-// @ts-ignore
-app.listen(port, (err: any) => {
-  if (err) {
-    return console.error(err);
-  }
-  return console.log(`server is listening on ${port}`);
-});
+const port = process.env.PORT || 3000
+
+App.listen(port, () => {
+  Logger.info('express its a live!')
+})
