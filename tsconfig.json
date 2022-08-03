@@ -100,6 +100,5 @@
   },
   "rules": {
     "no-console": false
-  },
-  "extends": ["tslint:recommended"]
+  }
 }

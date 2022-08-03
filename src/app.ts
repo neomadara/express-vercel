@@ -1,16 +1,13 @@
-import express, {Express, Request, Response} from "express";
-import Logger from "./utils/logger";
+import express, {Application} from "express";
+import router from "./router";
 
-const app: Express = express()
+const APP: Application = express()
 
-app.get('/healthz', (req: Request, res: Response) => {
-  Logger.info('health check service')
-  const healthCheck = {
-    uptime: process.uptime(),
-    message: 'Ok',
-    timestamp: Date.now()
-  }
-  res.send(healthCheck).status(200)
-})
+// middlewares
+APP.use(express.json())
+APP.use(express.urlencoded({extended: true}))
 
-export default app
+// routes
+APP.use('/api', router)
+
+export default APP
